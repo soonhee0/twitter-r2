@@ -197,6 +197,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "(ssr)/./node_modules/@mui/material/Button/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@mui/material/Button/index.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   buttonClasses: () => (/* reexport safe */ _buttonClasses__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n/* harmony export */   \"default\": () => (/* reexport safe */ _Button__WEBPACK_IMPORTED_MODULE_0__[\"default\"]),\n/* harmony export */   getButtonUtilityClass: () => (/* reexport safe */ _buttonClasses__WEBPACK_IMPORTED_MODULE_1__.getButtonUtilityClass)\n/* harmony export */ });\n/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button */ \"(ssr)/./node_modules/@mui/material/Button/Button.js\");\n/* harmony import */ var _buttonClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./buttonClasses */ \"(ssr)/./node_modules/@mui/material/Button/buttonClasses.js\");\n/* __next_internal_client_entry_do_not_use__ default,buttonClasses,* auto */ \n\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvQG11aS9tYXRlcmlhbC9CdXR0b24vaW5kZXguanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7NkVBRW1DO0FBQ3dCO0FBQzNCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vZnJvbnRlbmQvLi9ub2RlX21vZHVsZXMvQG11aS9tYXRlcmlhbC9CdXR0b24vaW5kZXguanM/MjBkZCJdLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIGNsaWVudCc7XG5cbmV4cG9ydCB7IGRlZmF1bHQgfSBmcm9tICcuL0J1dHRvbic7XG5leHBvcnQgeyBkZWZhdWx0IGFzIGJ1dHRvbkNsYXNzZXMgfSBmcm9tICcuL2J1dHRvbkNsYXNzZXMnO1xuZXhwb3J0ICogZnJvbSAnLi9idXR0b25DbGFzc2VzJzsiXSwibmFtZXMiOlsiZGVmYXVsdCIsImJ1dHRvbkNsYXNzZXMiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/@mui/material/Button/index.js\n");
+
+/***/ }),
+
 /***/ "(ssr)/./node_modules/@mui/material/ButtonBase/ButtonBase.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@mui/material/ButtonBase/ButtonBase.js ***!
@@ -2251,6 +2262,18 @@ eval("/**\n * @license React\n * react-is.development.js\n *\n * Copyright (c) F
 
 "use strict";
 eval("\nif (false) {} else {\n    module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ \"(ssr)/./node_modules/@mui/utils/node_modules/react-is/cjs/react-is.development.js\");\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvQG11aS91dGlscy9ub2RlX21vZHVsZXMvcmVhY3QtaXMvaW5kZXguanMiLCJtYXBwaW5ncyI6IkFBQUE7QUFFQSxJQUFJQSxLQUF5QixFQUFjLEVBRTFDLE1BQU07SUFDTEMsOEpBQXlCO0FBQzNCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vZnJvbnRlbmQvLi9ub2RlX21vZHVsZXMvQG11aS91dGlscy9ub2RlX21vZHVsZXMvcmVhY3QtaXMvaW5kZXguanM/MjIwYyJdLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIHN0cmljdCc7XG5cbmlmIChwcm9jZXNzLmVudi5OT0RFX0VOViA9PT0gJ3Byb2R1Y3Rpb24nKSB7XG4gIG1vZHVsZS5leHBvcnRzID0gcmVxdWlyZSgnLi9janMvcmVhY3QtaXMucHJvZHVjdGlvbi5taW4uanMnKTtcbn0gZWxzZSB7XG4gIG1vZHVsZS5leHBvcnRzID0gcmVxdWlyZSgnLi9janMvcmVhY3QtaXMuZGV2ZWxvcG1lbnQuanMnKTtcbn1cbiJdLCJuYW1lcyI6WyJwcm9jZXNzIiwibW9kdWxlIiwiZXhwb3J0cyIsInJlcXVpcmUiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/@mui/utils/node_modules/react-is/index.js\n");
+
+/***/ }),
+
+/***/ "(rsc)/./node_modules/@mui/material/Button/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@mui/material/Button/index.js ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/* __next_internal_client_entry_do_not_use__ default,buttonClasses,* auto */ const { createProxy } = __webpack_require__(/*! next/dist/build/webpack/loaders/next-flight-loader/module-proxy */ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/module-proxy.js");
+module.exports = createProxy("/Users/dimiterial/K/twitter-clone-r2/frontend/node_modules/@mui/material/Button/index.js");
+
 
 /***/ }),
 

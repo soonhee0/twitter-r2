@@ -14,7 +14,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { tweetData } from "../type/types";
-import { useCreateTweet } from "./tweet.hooks.ts"; // useCreateTweetをインポート
+import { useCreateTweet } from "./tweet.hooks"; // useCreateTweetをインポート
 const _CreateTweet = ({}) => {
   // handleSubmitActionを追加
   const { onChangeFileInput, binaryForImgData, image, handleSubmitAction } =
