@@ -1,9 +1,11 @@
 {
+  "/not-found": "app/not-found.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
   "/home/page": "app/home/page.js",
+  "/api/fetch_tweet/route": "app/api/fetch_tweet/route.js",
   "/api/download_url/route": "app/api/download_url/route.js",
   "/tweet/page": "app/tweet/page.js",
   "/api/upload_url/route": "app/api/upload_url/route.js",
-  "/api/create_tweet/route": "app/api/create_tweet/route.js",
-  "/api/fetch_tweet/route": "app/api/fetch_tweet/route.js"
+  "/api/create_tweet/route": "app/api/create_tweet/route.js"
 }

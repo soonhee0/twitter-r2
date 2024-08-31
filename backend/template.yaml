@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  python3.11
+  python3.9
 
   Sample SAM Template for backend
 
@@ -30,7 +30,9 @@ Resources:
       # !Ref関数は指定したパラメータの値を返す
       StageName: !Ref StageName # Parametersの参照
       MethodSettings:
-        - DataTraceEnabled: false # Amazon CloudWatch Logsに出力するか。本番APIは機密データ保持の観点からfalseが推奨されている
+        - DataTraceEnabled:
+            false # Amazon CloudWatch Logsに出力するか。本番APIは機密データ保持の観点からfalseが推奨されている
+            # 複数のリソースとメソッドに設定を適用するには、HttpMethod にアスタリスク (*) を、ResourcePath に /* を指定する
           # 複数のリソースとメソッドに設定を適用するには、HttpMethod にアスタリスク (*) を、ResourcePath に /* を指定する
           ResourcePath: "/*"
           HttpMethod: "*"
@@ -85,6 +87,45 @@ Resources:
       Tags:
         - Key: TwitterLikeSnsDeveloper
           Value: Green
+
+  GeneratePresignedUrlFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies:
+        - S3CrudPolicy:
+            BucketName: twitter-like-storage
+      PackageType: Image
+      Events:
+        GeneratePresignedUrl:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /api/upload_url
+            Method: post
+        GenerateDownloadUrl:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MyApi
+            Path: /api/download_url
+            Method: post
+      Environment:
+        Variables:
+          S3_BUCKET_NAME: "twitter-like-storage-kyou"
+          S3_ENDPOINT_URL: "https://s3.ap-northeast-1.amazonaws.com"
+    Metadata:
+      Dockerfile: ./presigned_url/Dockerfile
+      DockerContext: ./
+      DockerTag: python3.9-v1
+
+  GeneratePresignedUrlLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${GeneratePresignedUrlFunction}
+      RetentionInDays: !Ref LogRetentionInDays
+      Tags:
+        - Key: TwitterLikeSnsDeveloper
+          Value: Green
+
   Tweets:
     Type: AWS::DynamoDB::Table # dynamo db
     Properties:
@@ -103,7 +144,24 @@ Resources:
       BillingMode: PAY_PER_REQUEST #  1秒あたりに数千ものリクエストを処理できる柔軟な請求オプションで利用した分だけ課金計算される仕組み
       PointInTimeRecoverySpecification:
         PointInTimeRecoveryEnabled: true # 35日前~5分前の時点のテーブル内容を復元できる機能
-# スタックの作成または更新後に表示される情報を定義するために使用
+  # スタックの作成または更新後に表示される情報を定義するために使用
+
+  S3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: twitter-like-storage-kyou
+      VersioningConfiguration: # バージョニングを有効化
+        Status: Enabled
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - "*"
+            AllowedMethods:
+              - PUT
+              - GET
+            AllowedOrigins:
+              - "https://twitter-clone.vercel.app" # vercelにデプロイ後に正しいURLに更新すること
+            MaxAge: 3000
 Outputs:
   FetchTweetApi:
     Description: "API Gateway endpoint URL for Prod stage for TweetAction function"
@@ -111,6 +169,12 @@ Outputs:
   CreateTweetApi:
     Description: "API Gateway endpoint URL for Prod stage for TweetAction function"
     Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/api/create_tweet/"
+  GeneratePresignedUrlApi:
+    Description: "API Gateway endpoint URL for Prod stage for Generate Presigned Url function"
+    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/api/upload_url/"
+  GenerateDownloadUrlApi:
+    Description: "API Gateway endpoint URL for Prod stage for Generate Download Url function"
+    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/api/download_url/"
   TweetActionFunction:
     Description: "Tweet Action Function Lambda Function ARN"
     Value: !GetAtt TweetActionFunction.Arn # ArnとはAWS リソースを一意に識別するもの。（TweetActionFunctionラムダのArn）
@@ -118,3 +182,6 @@ Outputs:
     Description: "Implicit IAM Role created for Tweet Action Function function"
     # Lambda 関数の実行ロールは、AWS サービスおよびリソースにアクセスする許可を関数に付与する AWS Identity and Access Management (IAM) ロールである。
     Value: !GetAtt TweetActionFunctionRole.Arn
+  GeneratePresignedUrlFunctionIamRole:
+    Description: "Implicit IAM Role created for Generate Presigned Url function"
+    Value: !GetAtt GeneratePresignedUrlFunctionRole.Arn
