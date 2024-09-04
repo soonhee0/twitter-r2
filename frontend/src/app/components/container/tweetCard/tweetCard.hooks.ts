@@ -23,8 +23,10 @@ export const useFetchTweetImage = (tweet: tweetData) => {
 
       setImageUrl(res.presignedUrl); // 取得した画像URLを状態にセットする
     };
+    // APIを呼び出すための非同期関数
     fetchImage();
-  }, []);
+    // tweetオブジェクトが変更された場合に再度APIを呼び出す
+  }, [tweet]);
 
   return { imageUrl };
 };
