@@ -93,7 +93,7 @@ Resources:
     Properties:
       Policies:
         - S3CrudPolicy:
-            BucketName: twitter-like-storage
+            BucketName: twitter-like-storage-kyou1
       PackageType: Image
       Events:
         GeneratePresignedUrl:
@@ -110,7 +110,7 @@ Resources:
             Method: post
       Environment:
         Variables:
-          S3_BUCKET_NAME: "twitter-like-storage-kyou"
+          S3_BUCKET_NAME: "twitter-like-storage-kyou1"
           S3_ENDPOINT_URL: "https://s3.ap-northeast-1.amazonaws.com"
     Metadata:
       Dockerfile: ./presigned_url/Dockerfile
@@ -149,7 +149,7 @@ Resources:
   S3:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: twitter-like-storage-kyou
+      BucketName: twitter-like-storage-kyou1
       VersioningConfiguration: # バージョニングを有効化
         Status: Enabled
       CorsConfiguration:
@@ -160,7 +160,8 @@ Resources:
               - PUT
               - GET
             AllowedOrigins:
-              - "https://twitter-clone.vercel.app" # vercelにデプロイ後に正しいURLに更新すること
+              - "https://twitter-r2-y1z4.vercel.app"
+              # - "https://twitter-clone.vercel.app" # vercelにデプロイ後に正しいURLに更新すること
             MaxAge: 3000
 Outputs:
   FetchTweetApi:
