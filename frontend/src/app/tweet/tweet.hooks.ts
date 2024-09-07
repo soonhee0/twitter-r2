@@ -86,6 +86,7 @@ const getUploadUrl = async (tweetId: string): Promise<string | null> => {
     "/api/upload_url",
     "POST",
     "no-store",
+    // APIにデータを送信するときにデータをJSON形式に変換して送信する
     JSON.stringify({ userId: "test@mail.com", tweetId })
   );
   return response.presignedUrl;
