@@ -10,7 +10,7 @@ def create_tweet_handler(payload: dict):
     
     get_table("Tweets").put_item(
         Item={
-            "user_id": payload["userId"],
+            "user_id": payload[""],
             "id": payload["id"],
             "tweet_info": payload["tweetInfo"],
             "tweet_content": payload["tweetContent"],

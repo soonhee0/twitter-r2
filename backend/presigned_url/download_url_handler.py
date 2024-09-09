@@ -10,6 +10,11 @@ def handler(payload: dict):
     署名付きURLの発行ラムダ.
     /api/download_url
     """
+
+    # userId と tweetId の値をログに出力して確認
+    print("Received userId:", payload.get("userId"))
+    print("Received tweetId:", payload.get("tweetId"))
+    
     generated_download_url = get_s3_client().generate_presigned_url(
         ClientMethod="get_object",  # get_object用のURL取得
         Params={

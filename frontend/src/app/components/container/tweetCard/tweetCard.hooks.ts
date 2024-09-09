@@ -10,6 +10,9 @@ export const useFetchTweetImage = (tweet: tweetData) => {
   //   画像URLを取得する
   useEffect(() => {
     if (tweet.tweetContent.imgName === "") return; // 画像名が空であればAPI呼び出しをしない
+    console.log("userId:", tweet.userId); // userIdをログに出力
+    console.log("tweetId:", tweet.id); // tweetIdをログに出力
+
     const fetchImage = async () => {
       const res = await apiClient(
         "/api/download_url",

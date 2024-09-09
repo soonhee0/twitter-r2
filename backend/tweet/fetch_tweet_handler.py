@@ -4,7 +4,7 @@ from db.utils import query
 
 def fetch_tweet_handler(payload: dict):
     """tweet取得ラムダ."""
-    user_ids = payload["userIds"]
+    user_ids = payload["s"]
 
     tweets = []
     for user_id in user_ids:

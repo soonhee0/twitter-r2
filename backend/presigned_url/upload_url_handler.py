@@ -10,6 +10,10 @@ def handler(payload: dict):
     署名付きURLの発行ラムダ.
     /api/upload_url
     """
+    print("Received userId-u:", payload.get("userId")) 
+    # "userId":test@mail.com
+    print("Received tweetId-u:", payload.get("tweetId")) 
+    #"tweetId": 469e51c5-c979-4c3b-b941-f395844ecd0e
     # S3へ保存するパスを指定してpresigned_urlを取得する
     generated_presigned_url = get_s3_client().generate_presigned_url(
         ClientMethod="put_object", # put_object用のURL取得
