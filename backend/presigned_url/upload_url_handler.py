@@ -10,6 +10,7 @@ def handler(payload: dict):
     署名付きURLの発行ラムダ.
     /api/upload_url
     """
+    type(payload)
     print("Received userId-u:", payload.get("userId")) 
     # "userId":test@mail.com
     print("Received tweetId-u:", payload.get("tweetId")) 
