@@ -160,7 +160,7 @@ Resources:
               - PUT
               - GET
             AllowedOrigins:
-              - "https://twitter-r2-y1z4.vercel.app"
+              - "twitter-r2-y1z4-2tal2z4wa-soonhee0s-projects.vercel.app"
               # - "https://twitter-clone.vercel.app" # vercelにデプロイ後に正しいURLに更新すること
             MaxAge: 3000
 Outputs:
