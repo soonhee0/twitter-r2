@@ -10,6 +10,11 @@ def handler(payload: dict):
     署名付きURLの発行ラムダ.
     /api/upload_url
     """
+    if isinstance(payload,dict):
+        print ("payload is a dict") 
+    else:
+        print ("payload is NOT a dict")
+    print("payload:",payload)
     print("Received userId-u:", payload.get("userId")) 
     # "userId":test@mail.com
     print("Received tweetId-u:", payload.get("tweetId")) 

@@ -10,7 +10,7 @@ const Home = async () => {
   // useFetchTweetsDataはカスタムフック ツイートデータを取得する機能を提供する
   // オブジェクトの分割代入
   // useFetchTweetsData(["test@mail.com"]) の返り値であるオブジェクトから fetchTweetsData プロパティを取り出し、それを変数 fetchTweetsData に格納
-  const { fetchTweetsData } = useFetchTweetsData(["testUserId"]);
+  const { fetchTweetsData } = useFetchTweetsData(["test@mail.com"]);
   // 取得したtツイートデータが変数tweetsDataに格納される
   const tweetsData = await fetchTweetsData();
   // 一旦console.logでコマンドプロンプトやbashなどの`npm run dev`を実行しているところでレスポンスデータを確認してみましょう
