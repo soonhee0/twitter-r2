@@ -29,7 +29,7 @@ export const useFetchTweetImage = (tweet: tweetData) => {
     // APIを呼び出すための非同期関数
     fetchImage();
     // tweetオブジェクトが変更された場合に再度APIを呼び出す
-  }, [tweet]);
+  }, []);
 
   return { imageUrl };
 };
